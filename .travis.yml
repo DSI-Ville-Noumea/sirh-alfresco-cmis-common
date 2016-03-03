@@ -1,8 +1,11 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 cache:
   directories:
   - $HOME/.m2
-before_install: 
-  - export TZ=Pacific/Noumea
+before_install:
+- export TZ=Pacific/Noumea
+env:
+  global:
+    secure: Fpy0ZKZ5SSYUdkQOdWdQjaHwNviCLRi0MEMO7YMkwcwVvPsgfeNdj/ZDAy1jCnBu1LvocoZwPTv0h+ODnEDN0E6aAcR4Lo59eWC5lQElUGwtQAoAqvJfHFwh8hACYXn0nUeq6ytV+VU5GiG+oiqjaxJpHtg1nTtirO6nx5zp119ksSEC/oJUKNPPsXha1tId7Zp3s5cGY/RB/IXEz1g52+KyuV0V2nNad1HSPphxab1wwKDJVFYFYNHKCV1mzEAqK7pIJJtvjIZmaMu2+DE6AbjAbH2f9W99UfkeuoQEs8FsXHVNmCueAzQ2FinEu/V1vGbk0AZ0yuz59vT/jik6h6wo5gpPXuHtf0XT1T2dS7ulwQK69MxJTx8wFb4puVkivyPze1TNCTnaDDqWSNAtBRSYhWRjiVKj59lI3P28FMLm5tD3URW6ZH1oi7Ulk6LxruCl2dsyx6U5eAlVJbKHCFx/YGiSRAZoWcFvdSRzPYpGVSbT23i1mQCx0Wey5MrGK2Ih9fQ4pAugogdOfkz1LKGEPYNXOWhfeecRKJ2qsY9VgK0OzjwFP2gHNcm80Qw8WkqX2J8ek49vljkjQYGNEe+XeLWvhBMzL31xKFfdA+H9376UtmwZ4w3e7ijpwAEdQwTevifAQLTkLdzmj6ETUMcBwUYa/rkLSwJvCXrujlg=
