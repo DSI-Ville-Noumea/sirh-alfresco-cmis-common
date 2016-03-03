@@ -246,6 +246,15 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>${coveralls-maven-plugin.version}</version>
+                <configuration>
+                    <repoToken>${coveralls-maven-plugin.repoToken}</repoToken>
+                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
@@ -338,15 +347,6 @@
                 </reportSets>
             </plugin>
             
-            <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>${coveralls-maven-plugin.version}</version>
-                <configuration>
-                    <repoToken>${coveralls-maven-plugin.repoToken}</repoToken>
-                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
