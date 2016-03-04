@@ -11,12 +11,22 @@
 		<java.version>7</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <chemistry.version>0.13.0</chemistry.version>
-		<spring.version>4.0.6.RELEASE</spring.version>
+		<spring.version>4.2.5.RELEASE</spring.version>
 		<jacoco.version>0.7.6.201602180812</jacoco.version>
 		
         <coveralls-maven-plugin.version>4.1.0</coveralls-maven-plugin.version>
         <coveralls-maven-plugin.repoToken>${env.COVERALLS_REPOTOKEN}</coveralls-maven-plugin.repoToken>
 		<maven-site-plugin.version>3.5</maven-site-plugin.version>
+		<findbugs-maven-plugin.version>3.0.3</findbugs-maven-plugin.version>
+        <maven-project-info-reports-plugin.version>2.8.1</maven-project-info-reports-plugin.version>
+        <maven-surefire-report-plugin.version>2.19.1</maven-surefire-report-plugin.version>
+        <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
+        <maven-pmd-plugin.version>3.6</maven-pmd-plugin.version>
+        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+        <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
+        <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
 	</properties>
 
 	<repositories>
@@ -55,11 +65,13 @@
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-api-mockito</artifactId>
 			<version>1.6.4</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-module-junit4</artifactId>
 			<version>1.6.4</version>
+			<scope>test</scope>
 		</dependency>
 		
 		
