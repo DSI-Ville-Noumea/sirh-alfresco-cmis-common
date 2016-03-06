@@ -32,6 +32,9 @@
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+	    <versioneye-maven-plugin.version>3.7.0</versioneye-maven-plugin.version>
+	    <versioneye-maven-plugin.apiKey>${env.VERSIONEYE_APIKEY}</versioneye-maven-plugin.apiKey>
+	    <versioneye-maven-plugin.projectId>${env.VERSIONEYE_PROJECTID}</versioneye-maven-plugin.projectId>
 	</properties>
 
 	<repositories>
@@ -272,6 +275,16 @@
                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                 </configuration>
             </plugin>
+            
+            <plugin>
+		         <groupId>com.versioneye</groupId>
+		           <artifactId>versioneye-maven-plugin</artifactId>
+		           <version>${versioneye-maven-plugin.version}</version>
+		           <configuration>
+		              <apiKey>${versioneye-maven-plugin.apiKey}</apiKey>
+		            <projectId>${versioneye-maven-plugin.projectId}</projectId>
+		         </configuration>
+		      </plugin>
 		</plugins>
 	</build>
 
