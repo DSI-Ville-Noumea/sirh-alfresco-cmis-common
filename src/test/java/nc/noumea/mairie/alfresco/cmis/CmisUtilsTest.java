@@ -1,7 +1,12 @@
 package nc.noumea.mairie.alfresco.cmis;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
+import java.util.Date;
+
+import org.joda.time.DateTime;
 import org.junit.Test;
 
 public class CmisUtilsTest {
@@ -25,5 +30,41 @@ public class CmisUtilsTest {
 		
 		CmisUtils n = new CmisUtils();
 		assertNotNull(n);
+	}
+	
+	@Test
+	public void getPatternAbsence_nomEtPrenomInferieurA25caracteres() {
+		
+		String typeDemande = "CA";
+		String nom = "CHARVET"; 
+		String prenom = "TATIANA"; 
+		Date date = new DateTime(2016,3,21,0,0,0).toDate();
+		Integer sequence = 1;
+		
+		assertEquals(CmisUtils.getPatternAbsence(typeDemande, nom, prenom, date, sequence), "ABS_CA_CHARVET_TATIANA_20160321_1");
+	}
+	
+	@Test
+	public void getPatternAbsence_nomEtPrenomSuperieurA25caracteres() {
+		
+		String typeDemande = "CA";
+		String nom = "ANGLIO NATAUTAVA VENASIO"; 
+		String prenom = "NIKOLA"; 
+		Date date = new DateTime(2016,3,21,0,0,0).toDate();
+		Integer sequence = 1;
+		
+		assertEquals(CmisUtils.getPatternAbsence(typeDemande, nom, prenom, date, sequence), "ABS_CA_ANGLIO_NATAUTAVA_VENASIO_N_20160321_1");
+	}
+	
+	@Test
+	public void getPatternAbsence_nomSuperieurA25caracteres() {
+		
+		String typeDemande = "CA";
+		String nom = "ANGLIO NATAUTAVA VENASIO DE TEST"; 
+		String prenom = "NIKOLA"; 
+		Date date = new DateTime(2016,3,21,0,0,0).toDate();
+		Integer sequence = 1;
+		
+		assertEquals(CmisUtils.getPatternAbsence(typeDemande, nom, prenom, date, sequence), "ABS_CA_ANGLIO_NATAUTAVA_VENASIO_20160321_1");
 	}
 }

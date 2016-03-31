@@ -7,10 +7,14 @@ import org.apache.chemistry.opencmis.client.api.Session;
 import org.apache.chemistry.opencmis.client.runtime.SessionFactoryImpl;
 import org.apache.chemistry.opencmis.commons.SessionParameter;
 import org.apache.chemistry.opencmis.commons.enums.BindingType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CreateSession {
+	
+	private Logger logger = LoggerFactory.getLogger(CreateSession.class);
 	
 	/**
 	 * Retourne une session CMIS branchee sur Alfresco
@@ -45,6 +49,8 @@ public class CreateSession {
 	    // ATTENTION important : la classe AlfrescoObjectFactoryImpl n est utile que pour CMIS 1.0 et PAS pour CMIS 1.1
 //	    parameter.put(SessionParameter.OBJECT_FACTORY_CLASS, "org.alfresco.cmis.client.impl.AlfrescoObjectFactoryImpl");
 	    parameter.put(SessionParameter.REPOSITORY_ID, "-default-");
+	    
+	    logger.debug("try to connect to CMIS Alfresco with url : " + alfrescoUrl + " with login " + alfrescoLogin);
 	    
 	    // create session
 		Session session = factory.getRepositories(parameter).get(0).createSession();
