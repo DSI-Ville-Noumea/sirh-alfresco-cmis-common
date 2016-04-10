@@ -35,7 +35,7 @@
 	    <versioneye-maven-plugin.version>3.9.1</versioneye-maven-plugin.version>
 	    <versioneye-maven-plugin.apiKey>${env.VERSIONEYE_APIKEY}</versioneye-maven-plugin.apiKey>
 	    <versioneye-maven-plugin.projectId>${env.VERSIONEYE_PROJECTID}</versioneye-maven-plugin.projectId>
-	    <joda-time.version>2.9.2</joda-time.version>
+	    <joda-time.version>2.9.3</joda-time.version>
 	</properties>
 
 	<repositories>
