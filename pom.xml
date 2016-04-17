@@ -16,7 +16,7 @@
 		
         <coveralls-maven-plugin.version>4.1.0</coveralls-maven-plugin.version>
         <coveralls-maven-plugin.repoToken>${env.COVERALLS_REPOTOKEN}</coveralls-maven-plugin.repoToken>
-		<maven-site-plugin.version>3.5</maven-site-plugin.version>
+		<maven-site-plugin.version>3.5.1</maven-site-plugin.version>
 		<findbugs-maven-plugin.version>3.0.3</findbugs-maven-plugin.version>
         <maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
         <maven-surefire-report-plugin.version>2.19.1</maven-surefire-report-plugin.version>
