@@ -13,4 +13,11 @@ public class TypeEtatPayeurPointageEnumTest {
 		assertEquals("Titres Repas/", TypeEtatPayeurPointageEnum.getPathAlfrescoByType(TypeEtatPayeurPointageEnum.TYPE_ETAT_PAYEUR_TITRE_REPAS));
 		assertNull(TypeEtatPayeurPointageEnum.getPathAlfrescoByType(null));
 	}
+	
+	@Test
+	public void getValue() {
+		
+		assertEquals(TypeEtatPayeurPointageEnum.TYPE_ETAT_PAYEUR_POINTAGE.getValue(), "Etats Payeur");
+		assertEquals(TypeEtatPayeurPointageEnum.TYPE_ETAT_PAYEUR_TITRE_REPAS.getValue(), "Titres Repas");
+	}
 }
