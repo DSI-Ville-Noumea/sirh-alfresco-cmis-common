@@ -10,6 +10,7 @@ import java.io.InputStream;
 
 import org.apache.chemistry.opencmis.client.api.CmisObject;
 import org.apache.chemistry.opencmis.client.api.Document;
+import org.apache.chemistry.opencmis.client.api.Folder;
 import org.apache.chemistry.opencmis.client.api.Session;
 import org.apache.chemistry.opencmis.commons.data.ContentStream;
 import org.apache.commons.io.FileUtils;
@@ -121,5 +122,61 @@ public class CmisServiceTest {
 		String result = service.getIdObjectCmis(path, session);
 		
 		assertNull(result);
+	}
+	
+	@Test
+	public void createArborescenceAgent_doNothing() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenReturn(cmisObject);
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.never()).createFolder(Mockito.anyMapOf(String.class, String.class));
+	}
+	
+	@Test
+	public void createArborescenceAgent_doNothingBis() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenReturn(null);
+		Mockito.when(session.getObjectByPath(CmisService.PATH_FOLDER_AGENTS)).thenReturn(null);
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.never()).createFolder(Mockito.anyMapOf(String.class, String.class));
+	}
+	
+	@Test
+	public void createArborescenceAgent_createFolder() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenReturn(null);
+		Mockito.when(session.getObjectByPath(CmisService.PATH_FOLDER_AGENTS)).thenReturn(cmisObject);
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.times(1)).createFolder(Mockito.anyMapOf(String.class, String.class));
 	}
 }

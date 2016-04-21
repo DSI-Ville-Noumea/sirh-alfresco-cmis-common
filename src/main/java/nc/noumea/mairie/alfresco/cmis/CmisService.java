@@ -85,7 +85,7 @@ public class CmisService {
 		// on cherche le repertoire distant 
 		CmisObject object = null;
 		try {
-			object = session.getObject(getIdObjectCmis(pathAgentAbsolute, session));
+			object = session.getObjectByPath(pathAgentAbsolute);
 		} catch(CmisObjectNotFoundException e) {
 		}
 		
@@ -99,7 +99,7 @@ public class CmisService {
 	    
 	    // 1. on recupere le dossier parent Agents
 	    try {
-			object = session.getObject(getIdObjectCmis(PATH_FOLDER_AGENTS, session));
+			object = session.getObjectByPath(PATH_FOLDER_AGENTS);
 		} catch(CmisObjectNotFoundException e) {
 	    	logger.debug(ERROR_FOLDER_AGENTS);
 	    	return;
