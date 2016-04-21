@@ -72,8 +72,14 @@ public class CmisUtilsTest {
 	
 	@Test
 	public void getPathAgent() {
-		
 		assertEquals("TATIANA_CHARVET_9005138", CmisUtils.getPathAgent(9005138, "CHARVET", "TATIANA"));
+	}
+	
+	@Test
+	public void getPathAgent_returnNull() {
+		assertNull(CmisUtils.getPathAgent(null, "CHARVET", "TATIANA"));
+		assertNull(CmisUtils.getPathAgent(9005138, null, "TATIANA"));
+		assertNull(CmisUtils.getPathAgent(9005138, "CHARVET", null));
 	}
 	
 	@Test
