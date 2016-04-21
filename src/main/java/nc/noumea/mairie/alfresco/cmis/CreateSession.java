@@ -37,7 +37,7 @@ public class CreateSession {
 	    // connection settings
 		parameter.put(SessionParameter.BINDING_TYPE, BindingType.ATOMPUB.value());
 		parameter.put(SessionParameter.ATOMPUB_URL, alfrescoUrl+"alfresco/api/-default-/cmis/versions/1.1/atom");
-//	    parameter.put(SessionParameter.WEBSERVICES_ACL_SERVICE, alfrescoUrl+"alfresco/cmisws/services/ACLService?wsdl");
+	    parameter.put(SessionParameter.WEBSERVICES_ACL_SERVICE, alfrescoUrl+"alfresco/cmisws/services/ACLService?wsdl");
 //	    parameter.put(SessionParameter.WEBSERVICES_DISCOVERY_SERVICE, alfrescoUrl+"alfresco/cmisws/services/DiscoveryService?wsdl");
 //	    parameter.put(SessionParameter.WEBSERVICES_MULTIFILING_SERVICE, alfrescoUrl+"alfresco/cmisws/services/MultiFilingService?wsdl");
 //	    parameter.put(SessionParameter.WEBSERVICES_NAVIGATION_SERVICE, alfrescoUrl+"alfresco/cmisws/services/NavigationService?wsdl");
