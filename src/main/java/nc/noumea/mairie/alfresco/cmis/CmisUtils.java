@@ -77,6 +77,17 @@ public final class CmisUtils {
 		return result;
 	}
 	
+	/**
+	 * Retourne le nom pour une piece jointe ajoutee une demande
+	 * d absence
+	 * 
+	 * @param typeDemande String Type d absence
+	 * @param nom String nom agent
+	 * @param prenom String prenom de l agent
+	 * @param date Date de debut de la demande
+	 * @param sequence Integer sequence si boucle
+	 * @return String le nom du fichier absence
+	 */
 	public static String getPatternAbsence(String typeDemande, String nom, String prenom, Date date, Integer sequence) { 
 
 		String nomCustom = "";
@@ -101,6 +112,14 @@ public final class CmisUtils {
 		return result;
 	}
 	
+	/**
+	 * Retourne le nom du dossier agent dans le site SIRH
+	 * 
+	 * @param idAgent Integer ID de l agent
+	 * @param nom String nom de l agent
+	 * @param prenom String Prenom de l agent
+	 * @return String Nom du dossier agent
+	 */
 	public static String getPathAgent(Integer idAgent, String nom, String prenom) {
 		if(null == nom
 				|| null == prenom
@@ -110,6 +129,16 @@ public final class CmisUtils {
 		return prenom + UNDERSCORE + nom + UNDERSCORE + idAgent;
 	}
 	
+	/**
+	 * retourne le chemin dans le site SIRH pour la piece jointe a ajouter
+	 * 
+	 * @param idAgent Integer ID de l agent
+	 * @param nom String nom de l agent
+	 * @param prenom String prenom de l agent
+	 * @param idRefGroupeAbsence Integer Groupe d absence
+	 * @param fromHSCT boolean provient ou non de HSCT dans SIRH
+	 * @return String retourne le chemin dans le site SIRH pour la piece jointe a ajouter
+	 */
 	public static String getPathAbsence(Integer idAgent, String nom, String prenom, Integer idRefGroupeAbsence, boolean fromHSCT) {
 		
 		String folderTypeAbsence = null;
@@ -124,6 +153,13 @@ public final class CmisUtils {
 		return PATH_ABSENCES_AGENTS + getPathAgent(idAgent, nom, prenom) + folderTypeAbsence + SLASH;
 	}
 	
+	/**
+	 * Retourne le chemin dans Alfresco pour les etats du payeur
+	 * soit pointage soit titre repas
+	 * 
+	 * @param type TypeEtatPayeurPointageEnum
+	 * @return String
+	 */
 	public static String getPathPointage(TypeEtatPayeurPointageEnum type) {
 		
 		String folderTypePointage = TypeEtatPayeurPointageEnum.getPathAlfrescoByType(type);
