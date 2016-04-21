@@ -117,7 +117,8 @@ public class CmisService {
 	    	propertiesFolderCustomAgent.put("cmis:objectTypeId",  "cmis:folder");
 	    	propertiesFolderCustomAgent.put("cmis:name", pathAgentRelative);
 		    
-	    	Folder folderCustomAgent = folder.createFolder(propertiesFolderCustomAgent);
+	    	//Folder folderCustomAgent = 
+	    	folder.createFolder(propertiesFolderCustomAgent);
 	    	logger.debug(String.format(CREATE_FOLDER_OK, pathAgentRelative));
 	        
 	    	/////////////////////////////////
