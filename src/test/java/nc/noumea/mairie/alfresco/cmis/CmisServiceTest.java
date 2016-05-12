@@ -10,8 +10,12 @@ import java.io.InputStream;
 
 import org.apache.chemistry.opencmis.client.api.CmisObject;
 import org.apache.chemistry.opencmis.client.api.Document;
+import org.apache.chemistry.opencmis.client.api.Folder;
 import org.apache.chemistry.opencmis.client.api.Session;
 import org.apache.chemistry.opencmis.commons.data.ContentStream;
+import org.apache.chemistry.opencmis.commons.exceptions.CmisConstraintException;
+import org.apache.chemistry.opencmis.commons.exceptions.CmisContentAlreadyExistsException;
+import org.apache.chemistry.opencmis.commons.exceptions.CmisObjectNotFoundException;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -121,5 +125,122 @@ public class CmisServiceTest {
 		String result = service.getIdObjectCmis(path, session);
 		
 		assertNull(result);
+	}
+	
+	@Test
+	public void createArborescenceAgent_doNothing() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenReturn(cmisObject);
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.never()).createFolder(Mockito.anyMapOf(String.class, String.class));
+	}
+	
+	@Test
+	public void createArborescenceAgent_doNothingBis() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenReturn(null);
+		Mockito.when(session.getObjectByPath(CmisService.PATH_FOLDER_AGENTS)).thenReturn(null);
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.never()).createFolder(Mockito.anyMapOf(String.class, String.class));
+	}
+	
+	@Test
+	public void createArborescenceAgent_createFolder() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenReturn(null);
+		Mockito.when(session.getObjectByPath(CmisService.PATH_FOLDER_AGENTS)).thenReturn(cmisObject);
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.times(1)).createFolder(Mockito.anyMapOf(String.class, String.class));
+	}
+	
+	@Test
+	public void createArborescenceAgent_doNothing_Exception() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenThrow(new CmisObjectNotFoundException());
+		Mockito.when(session.getObjectByPath(CmisService.PATH_FOLDER_AGENTS)).thenThrow(new CmisObjectNotFoundException());
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.never()).createFolder(Mockito.anyMapOf(String.class, String.class));
+	}
+	
+	@Test
+	public void createArborescenceAgent_createFolder_CmisContentAlreadyExistsException() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenReturn(null);
+		Mockito.when(session.getObjectByPath(CmisService.PATH_FOLDER_AGENTS)).thenReturn(cmisObject);
+		
+		Mockito.when(((Folder)cmisObject).createFolder(Mockito.anyMapOf(String.class, String.class))).thenThrow(new CmisContentAlreadyExistsException());
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.times(1)).createFolder(Mockito.anyMapOf(String.class, String.class));
+	}
+	
+	@Test
+	public void createArborescenceAgent_createFolder_CmisConstraintException() {
+		
+		Integer idAgent = 9005138;
+		String nomAgent = "CHARVET";
+		String prenomAgent = "TATIANA";
+
+		Folder cmisObject = Mockito.mock(Folder.class);
+		
+		Session session = Mockito.mock(Session.class);
+		Mockito.when(session.getObjectByPath("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138")).thenReturn(null);
+		Mockito.when(session.getObjectByPath(CmisService.PATH_FOLDER_AGENTS)).thenReturn(cmisObject);
+		
+		Mockito.when(((Folder)cmisObject).createFolder(Mockito.anyMapOf(String.class, String.class))).thenThrow(new CmisConstraintException());
+		
+		CmisService service = new CmisService();
+		service.createArborescenceAgent(idAgent, nomAgent, prenomAgent, session);
+		
+		Mockito.verify((Folder)cmisObject, Mockito.times(1)).createFolder(Mockito.anyMapOf(String.class, String.class));
 	}
 }
