@@ -3,7 +3,8 @@ package nc.noumea.mairie.ptg;
 public enum TypeEtatPayeurPointageEnum {
 
 	TYPE_ETAT_PAYEUR_POINTAGE("Etats Payeur"),
-	TYPE_ETAT_PAYEUR_TITRE_REPAS("Titres Repas");
+	TYPE_ETAT_PAYEUR_TITRE_REPAS("Titres Repas"),
+	UNKNOW("unkown");
 	
 	private String type;
 
@@ -26,7 +27,7 @@ public enum TypeEtatPayeurPointageEnum {
 			case TYPE_ETAT_PAYEUR_TITRE_REPAS:
 				return "Titres Repas/";
 			default:
-				return null;
+				throw new IllegalArgumentException();
 		}
 	}
 }
