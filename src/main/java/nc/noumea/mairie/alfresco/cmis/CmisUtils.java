@@ -12,13 +12,17 @@ public final class CmisUtils {
 	private static final String SLASH = "/";
 	private static final Integer NOMBRE_CARACTERES_MAX = 25;
 
+	protected static final String PATH_SIRH = "/Sites/SIRH/documentLibrary/";
 	protected static final String PATH_ETATS_PAYEUR = "/Sites/SIRH/documentLibrary/Pointages/";
 	protected static final String PATH_ABSENCES_AGENTS = "/Sites/SIRH/documentLibrary/Agents/";
 	protected static final String PATH_ABSENCES = "/Absences/";
 	
 	private static SimpleDateFormat sdfyyyyMMdd = new SimpleDateFormat("yyyyMMdd");
 	
-
+	// message d erreurs
+	public static final String ERROR_UPLOAD = "Erreur lors de l'envoi du fichier.";
+	public static final String ERROR_PATH = "Erreur lors de l'envoi du fichier : le dossier distant n'existe pas.";
+	
 	
 	// arborescence Dossier d'un agent
 	final static private String FOLDER_ABSENCES = "Absences";
@@ -165,5 +169,24 @@ public final class CmisUtils {
 		String folderTypePointage = TypeEtatPayeurPointageEnum.getPathAlfrescoByType(type);
 		
 		return PATH_ETATS_PAYEUR + folderTypePointage;
+	}
+	
+	/**
+	 * Utile a SIRH
+	 * Retourne le chemin pour la jout d un document dans SIRH
+	 * 
+	 * @param idAgent Integer ID de l agent
+	 * @param nom String nom de l agent
+	 * @param prenom String prenom de l agent
+	 * @param path du type de document (parametre dans la table SIRH.P_PATH_ALFRESCO)
+	 * @return String retourne le chemin dans le site SIRH pour le document a ajouter
+	 */
+	public static String getPathSIRH(Integer idAgent, String nom, String prenom, String pathDocument) {
+		
+		if(null == idAgent) {
+			return PATH_SIRH + pathDocument;
+		}
+		
+		return PATH_ABSENCES_AGENTS + getPathAgent(idAgent, nom, prenom) + SLASH + pathDocument;
 	}
 }
