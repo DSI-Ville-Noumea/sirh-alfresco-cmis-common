@@ -14,6 +14,11 @@ public class TypeEtatPayeurPointageEnumTest {
 		assertNull(TypeEtatPayeurPointageEnum.getPathAlfrescoByType(null));
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void getRefTypeGroupeAbsenceEnum_Exception() {
+		assertNull(TypeEtatPayeurPointageEnum.getPathAlfrescoByType(TypeEtatPayeurPointageEnum.UNKNOW));
+	}
+	
 	@Test
 	public void getValue() {
 		
