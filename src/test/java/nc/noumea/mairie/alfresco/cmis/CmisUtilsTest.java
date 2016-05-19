@@ -111,4 +111,10 @@ public class CmisUtilsTest {
 		assertEquals("/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138/Test_Path/", 
 				CmisUtils.getPathSIRH(9005138, "CHARVET", "TATIANA", "Test_Path/"));
 	}
+	
+	@Test
+	public void getPathSIRH_IdAgentNull() {
+		assertEquals("/Sites/SIRH/documentLibrary/Test_Path/", 
+				CmisUtils.getPathSIRH(null, "CHARVET", "TATIANA", "Test_Path/"));
+	}
 }
