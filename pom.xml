@@ -12,27 +12,27 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <chemistry.version>0.14.0</chemistry.version>
 		<spring.version>4.3.1.RELEASE</spring.version>
-		<jacoco.version>0.7.6.201602180812</jacoco.version>
+		<jacoco.version>0.7.7.201606060606</jacoco.version>
 		
-        <coveralls-maven-plugin.version>4.1.0</coveralls-maven-plugin.version>
+        <coveralls-maven-plugin.version>4.2.0</coveralls-maven-plugin.version>
         <coveralls-maven-plugin.repoToken>${env.COVERALLS_REPOTOKEN}</coveralls-maven-plugin.repoToken>
 		<maven-site-plugin.version>3.5.1</maven-site-plugin.version>
-		<findbugs-maven-plugin.version>3.0.3</findbugs-maven-plugin.version>
+		<findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
         <maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
         <maven-surefire-report-plugin.version>2.19.1</maven-surefire-report-plugin.version>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
         <maven-pmd-plugin.version>3.6</maven-pmd-plugin.version>
-        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
         <maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
         <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
         <maven-changes-plugin.version>2.12</maven-changes-plugin.version>
-        <maven-resources-plugin.version>3.0</maven-resources-plugin.version>
+        <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-	    <versioneye-maven-plugin.version>3.9.2</versioneye-maven-plugin.version>
+	    <versioneye-maven-plugin.version>3.10.0</versioneye-maven-plugin.version>
 	    <versioneye-maven-plugin.apiKey>${env.VERSIONEYE_APIKEY}</versioneye-maven-plugin.apiKey>
 	    <versioneye-maven-plugin.projectId>${env.VERSIONEYE_PROJECTID}</versioneye-maven-plugin.projectId>
 	    <joda-time.version>2.9.4</joda-time.version>
