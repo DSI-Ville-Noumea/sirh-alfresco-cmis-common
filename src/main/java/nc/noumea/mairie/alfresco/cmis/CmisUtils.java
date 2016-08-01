@@ -9,7 +9,7 @@ import nc.noumea.mairie.ptg.TypeEtatPayeurPointageEnum;
 public final class CmisUtils {
 
 	private static final String UNDERSCORE = "_";
-	private static final String SLASH = "/";
+	public static final String SLASH = "/";
 	private static final Integer NOMBRE_CARACTERES_MAX = 25;
 
 	protected static final String PATH_SIRH = "/Sites/SIRH/documentLibrary/";
@@ -173,7 +173,7 @@ public final class CmisUtils {
 	
 	/**
 	 * Utile a SIRH
-	 * Retourne le chemin pour la jout d un document dans SIRH
+	 * Retourne le chemin pour l ajout d un document dans SIRH
 	 * 
 	 * @param idAgent Integer ID de l agent
 	 * @param nom String nom de l agent
