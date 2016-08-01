@@ -11,7 +11,7 @@
 		<java.version>7</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <chemistry.version>0.14.0</chemistry.version>
-		<spring.version>4.2.6.RELEASE</spring.version>
+		<spring.version>4.3.1.RELEASE</spring.version>
 		<jacoco.version>0.7.6.201602180812</jacoco.version>
 		
         <coveralls-maven-plugin.version>4.1.0</coveralls-maven-plugin.version>
@@ -35,7 +35,7 @@
 	    <versioneye-maven-plugin.version>3.9.2</versioneye-maven-plugin.version>
 	    <versioneye-maven-plugin.apiKey>${env.VERSIONEYE_APIKEY}</versioneye-maven-plugin.apiKey>
 	    <versioneye-maven-plugin.projectId>${env.VERSIONEYE_PROJECTID}</versioneye-maven-plugin.projectId>
-	    <joda-time.version>2.9.3</joda-time.version>
+	    <joda-time.version>2.9.4</joda-time.version>
 	</properties>
 
 	<repositories>
