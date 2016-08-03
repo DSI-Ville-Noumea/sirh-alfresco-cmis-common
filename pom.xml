@@ -11,7 +11,7 @@
 		<java.version>7</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <chemistry.version>0.14.0</chemistry.version>
-		<spring.version>4.3.1.RELEASE</spring.version>
+		<spring.version>4.3.2.RELEASE</spring.version>
 		<jacoco.version>0.7.7.201606060606</jacoco.version>
 		
         <coveralls-maven-plugin.version>4.2.0</coveralls-maven-plugin.version>
