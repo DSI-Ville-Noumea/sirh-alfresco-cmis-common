@@ -117,4 +117,43 @@ public class CmisUtilsTest {
 		assertEquals("/Sites/SIRH/documentLibrary/Test_Path/", 
 				CmisUtils.getPathSIRH(null, "CHARVET", "TATIANA", "Test_Path/"));
 	}
+	
+	@Test
+	public void getPatternSIRH_nomEtPrenomInferieurA25caracteres() {
+		
+		String typeDemande = "AT";
+		String nom = "CHARVET"; 
+		String prenom = "TATIANA";
+		Integer idAgent = 9005138;
+		Date date = new DateTime(2016,3,21,0,0,0).toDate();
+		Integer sequence = 1;
+		
+		assertEquals(CmisUtils.getPatternSIRH(typeDemande, nom, prenom, idAgent, date, sequence), "AT_CHARVET_TATIANA_9005138_20160321_1");
+	}
+	
+	@Test
+	public void getPatternSIRH_nomEtPrenomSuperieurA25caracteres() {
+		
+		String typeDemande = "ADM";
+		String nom = "ANGLIO NATAUTAVA VENASIO"; 
+		String prenom = "NIKOLA";
+		Integer idAgent = 9005138;
+		Date date = new DateTime(2016,3,21,0,0,0).toDate();
+		Integer sequence = 1;
+		
+		assertEquals(CmisUtils.getPatternSIRH(typeDemande, nom, prenom, idAgent, date, sequence), "ADM_ANGLIO_NATAUTAVA_VENASIO_N_9005138_20160321_1");
+	}
+	
+	@Test
+	public void getPatternSIRH_nomSuperieurA25caracteres() {
+		
+		String typeDemande = "DIP";
+		String nom = "ANGLIO NATAUTAVA VENASIO DE TEST"; 
+		String prenom = "NIKOLA";
+		Integer idAgent = 9005138;
+		Date date = new DateTime(2016,3,21,0,0,0).toDate();
+		Integer sequence = 1;
+		
+		assertEquals(CmisUtils.getPatternSIRH(typeDemande, nom, prenom, idAgent, date, sequence), "DIP_ANGLIO_NATAUTAVA_VENASIO_9005138_20160321_1");
+	}
 }

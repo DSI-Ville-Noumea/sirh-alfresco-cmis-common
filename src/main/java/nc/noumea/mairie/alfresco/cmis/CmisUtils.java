@@ -189,4 +189,39 @@ public final class CmisUtils {
 		
 		return PATH_ABSENCES_AGENTS + getPathAgent(idAgent, nom, prenom) + SLASH + pathDocument;
 	}
+	
+	/**
+	 * Retourne le nom pour un document ajoute depuis SIRH
+	 * 
+	 * @param typeDemande String Type d absence
+	 * @param nom String nom agent
+	 * @param prenom String prenom de l agent
+	 * @param date Date de debut de la demande
+	 * @param sequence Integer sequence si boucle
+	 * @return String le nom du document
+	 */
+	public static String getPatternSIRH(String typeDemande, String nom, String prenom, Integer idAgent, Date date, Integer sequence) { 
+
+		String nomCustom = "";
+		String prenomCustom = "";
+		
+		if(nom.length() + prenom.length() > NOMBRE_CARACTERES_MAX) {
+			if(nom.length() > NOMBRE_CARACTERES_MAX) {
+				nomCustom = nom.substring(0, NOMBRE_CARACTERES_MAX);
+			}else{
+				nomCustom = nom;
+				prenomCustom = prenom.substring(0, NOMBRE_CARACTERES_MAX-nom.length());
+			}
+		}else{
+			nomCustom = nom;
+			prenomCustom = prenom;
+		}
+		
+		String result = typeDemande.toUpperCase() + UNDERSCORE + nomCustom.trim().toUpperCase() 
+				+ (prenomCustom.trim().equals("") ? "" : UNDERSCORE + prenomCustom.trim().toUpperCase()) + UNDERSCORE 
+				+ idAgent + UNDERSCORE
+				+ sdfyyyyMMdd.format(date) + UNDERSCORE + (null != sequence ? sequence : "");
+		result = result.replace(" ", UNDERSCORE);
+		return result;
+	}
 }
