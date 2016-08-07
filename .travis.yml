@@ -16,3 +16,8 @@ script:
 - mvn versioneye:update test jacoco:report
 after_success:
 - mvn coveralls:report
+notifications:
+  slack:
+    rooms:
+      secure: wxr/sHAsIuJU/gwpjQQrm1Cx2Xe0PREUhhvtxHaPVGCfxGQ9e0OsRkMaurh/CaDnhhW4v2M9HJAUJRm3ahlgPrs3jnz7dvXpy4g7KrT/LPdL8C/CZib1cUBOD2SDfpznoUyqpJPhW9UiYJ2X6rodFPPuQ9G502IIicrr9earz0npklY+xYRDSFzNn1NmH9W3QVNW9geB5BPjs9AzhqThTo7Fhr7SCSV8Na2I7/8eQlL6a0+o+1cOAvG43ftX3LjO4s6RhB5a8hX0TTfXvtOHl+tcTzIi5ZJNPYedRdRPn69C5RIF7F9nSL6hbC5GYg/OXUOVHLncmBzEnG1CoD8JFD+EHJFw/Sf6YYSZDKGJzncdf1PScYEiFiY7pilxM2ltsaXrdNHIVAKPqzromKz320jg+6gB4ku0gr87b+sP0Ut5KCZAACtc6N0hu2mcousGLmTJuWGboBC1vG9lbk4qzUklkX/wlXmsQX1DJK7vxN/FTQoxYYG4A8LaWfVwdibiJM57+vQNQnhrZt62xVxIUiUUxC4tsSIEWDPlh1nnx3dSkwan4bAmk83U20ajfW6yGGwd8K8/T3shebm6pXOXca4pPVoDErKX58bHN4dwkeCjNkRxXuCb+2quXTfZtiGgqh4KdpvLKM1jJ8wm/DzxUwvGPAVKAx0ChTNnbToe50M=
+      
