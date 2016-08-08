@@ -63,6 +63,9 @@ public final class CmisUtils {
 	public static final String CODE_TYPE_FORM = "FORM";
 	public static final String CODE_TYPE_PERM = "PERM";
 	public static final String CODE_TYPE_DIV = "DIV";
+	public static final String CODE_TYPE_C = "C";
+	public static final String CODE_TYPE_NS = "NS";
+	public static final String CODE_TYPE_FP = "FP";
 	
 	
     protected CmisUtils () { 
