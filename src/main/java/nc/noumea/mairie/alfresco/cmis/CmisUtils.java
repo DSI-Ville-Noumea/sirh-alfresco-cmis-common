@@ -49,6 +49,22 @@ public final class CmisUtils {
 		final static private String FOLDER_HANDICAP = "Handicap";
 		final static private String FOLDER_VM = "Visites médicales";
 
+		
+	// Type des documents SIRH
+	public static final String CODE_TYPE_AT = "AT";
+	public static final String CODE_TYPE_EAE = "EAE";
+	public static final String CODE_TYPE_ADM = "ADM";
+	public static final String CODE_TYPE_PHO = "PHO";
+	public static final String CODE_TYPE_VM = "VM";
+	public static final String CODE_TYPE_HANDI = "HANDI";
+	public static final String CODE_TYPE_CAMP = "CAMP";
+	public static final String CODE_TYPE_ACT = "ACT";
+	public static final String CODE_TYPE_DIP = "DIP";
+	public static final String CODE_TYPE_FORM = "FORM";
+	public static final String CODE_TYPE_PERM = "PERM";
+	public static final String CODE_TYPE_DIV = "DIV";
+	
+	
     protected CmisUtils () { 
     }
     
@@ -196,11 +212,14 @@ public final class CmisUtils {
 	 * @param typeDemande String Type d absence
 	 * @param nom String nom agent
 	 * @param prenom String prenom de l agent
+	 * @param idAgent Integer ID de l agent
 	 * @param date Date de debut de la demande
 	 * @param sequence Integer sequence si boucle
+	 * @param annee Integer Annee (utile a EAE)
 	 * @return String le nom du document
 	 */
-	public static String getPatternSIRH(String typeDemande, String nom, String prenom, Integer idAgent, Date date, Integer sequence) { 
+	public static String getPatternSIRH(String typeDemande, String nom, String prenom, Integer idAgent, 
+			Date date, Integer sequence, Integer annee) { 
 
 		String nomCustom = "";
 		String prenomCustom = "";
@@ -215,6 +234,14 @@ public final class CmisUtils {
 		}else{
 			nomCustom = nom;
 			prenomCustom = prenom;
+		}
+		
+		if(CODE_TYPE_EAE.equals(typeDemande)) {
+			String resultEAE = "EAE" + UNDERSCORE + annee + UNDERSCORE + nomCustom.trim().toUpperCase() 
+					+ (prenomCustom.trim().equals("") ? "" : UNDERSCORE + prenomCustom.trim().toUpperCase()) + UNDERSCORE 
+					+ idAgent;
+			resultEAE = resultEAE.replace(" ", UNDERSCORE);
+			return resultEAE;
 		}
 		
 		String result = typeDemande.toUpperCase() + UNDERSCORE + nomCustom.trim().toUpperCase() 
