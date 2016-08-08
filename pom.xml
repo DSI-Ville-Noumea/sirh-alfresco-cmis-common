@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>nc.noumea.mairie</groupId>
   <artifactId>sirh-alfresco-cmis-common</artifactId>
-  <version>1.2</version>
+  <version>1.2.2</version>
   <name>sirh-alfresco-cmis-common</name>
   <description>Remote pour interagir avec Alfresco</description>
   
