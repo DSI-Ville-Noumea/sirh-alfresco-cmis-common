@@ -173,4 +173,42 @@ public class CmisUtilsTest {
 		assertEquals(CmisUtils.getPatternSIRH(typeDemande, nom, prenom, idAgent, date, sequence, annee),
 				"EAE_2016_ANGLIO_NATAUTAVA_VENASIO_9005138");
 	}
+
+	@Test
+	public void getPatternSIRH_typeACT_or_CAMP() {
+
+		String typeDemande = CmisUtils.CODE_TYPE_ACT;
+		String nom = "ANGLIO NATAUTAVA VENASIO DE TEST";
+		String prenom = "NIKOLA";
+		Integer idAgent = 9005138;
+		Date date = new DateTime(2016, 3, 21, 0, 0, 0).toDate();
+		Integer sequence = 1;
+		Integer annee = 2016;
+
+		assertEquals(CmisUtils.getPatternSIRH(typeDemande, nom, prenom, idAgent, date, sequence, annee),
+				"ACT_2016_20160321_1");
+	}
+	
+	@Test
+	public void getPathEAE() {
+		
+		Integer idAgent = 9005138;
+		String nom = "CHARVET";
+		String prenom = "TATIANA";
+		
+		assertEquals(CmisUtils.getPathEAE(idAgent, nom, prenom),
+				"/Sites/SIRH/documentLibrary/Agents/TATIANA_CHARVET_9005138/Carrière/EAE/");
+	}
+	
+	@Test
+	public void getPatternEAE() {
+		
+		Integer idAgent = 9005138;
+		String annee = "2016";
+		int i = 0;
+		
+		assertEquals(CmisUtils.getPatternEAE(idAgent, annee, i), "EAE_2016_9005138");
+		
+		assertEquals(CmisUtils.getPatternEAE(idAgent, annee, i+1), "EAE_2016_9005138_1");
+	}
 }
