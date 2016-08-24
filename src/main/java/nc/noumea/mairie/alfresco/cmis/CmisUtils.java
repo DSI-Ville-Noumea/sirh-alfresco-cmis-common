@@ -224,6 +224,14 @@ public final class CmisUtils {
 	public static String getPatternSIRH(String typeDemande, String nom, String prenom, Integer idAgent, 
 			Date date, Integer sequence, Integer annee) { 
 
+		if(CODE_TYPE_CAMP.equals(typeDemande)
+				|| CODE_TYPE_ACT.equals(typeDemande)) {
+			
+			String resultCampagneEAE = typeDemande + UNDERSCORE + annee
+					+ UNDERSCORE + sdfyyyyMMdd.format(date) + UNDERSCORE + sequence;
+			return resultCampagneEAE;
+		}
+		
 		String nomCustom = "";
 		String prenomCustom = "";
 		
@@ -240,7 +248,7 @@ public final class CmisUtils {
 		}
 		
 		if(CODE_TYPE_EAE.equals(typeDemande)) {
-			String resultEAE = "EAE" + UNDERSCORE + annee + UNDERSCORE + nomCustom.trim().toUpperCase() 
+			String resultEAE = typeDemande + UNDERSCORE + annee + UNDERSCORE + nomCustom.trim().toUpperCase() 
 					+ (prenomCustom.trim().equals("") ? "" : UNDERSCORE + prenomCustom.trim().toUpperCase()) + UNDERSCORE 
 					+ idAgent;
 			resultEAE = resultEAE.replace(" ", UNDERSCORE);
@@ -253,5 +261,30 @@ public final class CmisUtils {
 				+ sdfyyyyMMdd.format(date) + UNDERSCORE + (null != sequence ? sequence : "");
 		result = result.replace(" ", UNDERSCORE);
 		return result;
+	}
+	
+	/**
+	 * Retourne le chemin pour l ajout d un document EAE a un agent
+	 * 
+	 * @param idAgent Integer ID de l agent
+	 * @param nom String nom de l agent
+	 * @param prenom String prenom de l agent
+	 * @return String retourne le chemin 
+	 */
+	public static String getPathEAE(Integer idAgent, String nom, String prenom) {
+		
+		return PATH_ABSENCES_AGENTS + getPathAgent(idAgent, nom, prenom) + SLASH + FOLDER_CARRIERE + SLASH + FOLDER_EAE + SLASH;
+	}
+	
+	/**
+	 * Retourne le nom pour un document EAE
+	 * 
+	 * @param idAgent Integer ID de l agent
+	 * @param annee Integer annee de l EAE
+	 * @return String retourne le nom du document EAE 
+	 */
+	public static String getPatternEAE(Integer idAgent, String annee, int i) {
+		
+		return CODE_TYPE_EAE + UNDERSCORE + annee + UNDERSCORE + idAgent + (i != 0 ? (UNDERSCORE + i) : "");
 	}
 }
