@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;
 import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -56,19 +57,23 @@ public class AlfrescoWsConsumer implements IAlfrescoWsConsumer {
 		PostMethod mPost = new PostMethod(url);
 
 		mPost.setRequestHeader("Content-Type", "application/json");
+		String messageErreur = "Erreur dans Alfresco pour la gestion des droits EAE.";
 		try {
 			mPost.setRequestEntity(new StringRequestEntity(json, "application/json", "UTF-8"));
 
 			int result = client.executeMethod(mPost);
 
 			logger.debug("result", result);
-
+			if (result != HttpStatus.SC_OK) {
+				logger.error(messageErreur);
+				throw new WSConsumerException(messageErreur);
+			}
 		} catch (HttpException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(messageErreur + e.getMessage());
+			throw new WSConsumerException(messageErreur + e.getMessage());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(messageErreur + e.getMessage());
+			throw new WSConsumerException(messageErreur + e.getMessage());
 		}
 	}
 

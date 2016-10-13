@@ -11,7 +11,6 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import nc.noumea.mairie.alfresco.dto.GlobalPermissionDto;
 import nc.noumea.mairie.alfresco.dto.PermissionDto;
@@ -56,6 +55,10 @@ public class AlfrescoWsConsumerTest {
 	@Test
 	public void testConnectionSetPermissionToAlfresco() throws HttpException, IOException {
 
+		alfrescoWsConsumer.setAlfrescoUrl("http://URL:80/");
+		alfrescoWsConsumer.setAlfrescoLogin("login");
+		alfrescoWsConsumer.setAlfrescoPassword("pwd");
+
 		PermissionDto permission = new PermissionDto("GROUP_SITE_SIRH_ADRIEN_SALES_9005131_SHD", "Consumer", true);
 
 		List<PermissionDto> permissions = new ArrayList<PermissionDto>();
@@ -70,15 +73,12 @@ public class AlfrescoWsConsumerTest {
 
 		String exMessage = "";
 		try {
-			ReflectionTestUtils.setField(alfrescoWsConsumer, "alfrescoUrl", "http://URL:80/");
-			ReflectionTestUtils.setField(alfrescoWsConsumer, "alfrescoLogin", "login");
-			ReflectionTestUtils.setField(alfrescoWsConsumer, "alfrescoPassword", "pwd");
 			alfrescoWsConsumer.setPermissionsNode("workspace://SpacesStore/7d4fa4ec-a0f6-4ee0-a0f7-07ea62747575", dto);
 		} catch (WSConsumerException ex) {
 			exMessage = ex.getMessage();
 		}
 
 		// Then
-		assertEquals("", exMessage);
+		assertEquals("Erreur dans Alfresco pour la gestion des droits EAE.URL", exMessage);
 	}
 }
