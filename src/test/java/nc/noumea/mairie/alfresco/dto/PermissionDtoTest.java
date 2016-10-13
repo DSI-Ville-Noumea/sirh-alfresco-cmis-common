@@ -17,4 +17,17 @@ public class PermissionDtoTest {
 		assertTrue(permissionDto.isRemove());
 	}
 	
+	@Test
+	public void constructor_WithSetter() {
+		
+		PermissionDto permissionDto = new PermissionDto();
+		permissionDto.setAuthority("authority");
+		permissionDto.setRemove(true);
+		permissionDto.setRole("role");
+		
+		assertEquals(permissionDto.getAuthority(), "authority");
+		assertEquals(permissionDto.getRole(), "role");
+		assertTrue(permissionDto.isRemove());
+	}
+	
 }

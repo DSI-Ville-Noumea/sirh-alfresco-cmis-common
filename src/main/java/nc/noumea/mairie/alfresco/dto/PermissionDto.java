@@ -20,6 +20,10 @@ public class PermissionDto implements Serializable {
 		this.remove = remove;
 	}
 	
+	public PermissionDto() {
+		super();
+	}
+
 	public String getAuthority() {
 		return authority;
 	}
