@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>nc.noumea.mairie</groupId>
   <artifactId>sirh-alfresco-cmis-common</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.4</version>
   <name>sirh-alfresco-cmis-common</name>
   <description>Remote pour interagir avec Alfresco</description>
   
@@ -194,6 +194,38 @@
 	        <version>1.0</version>
 	        <type>jar</type>
 	    </dependency>
+	    
+	    
+	    
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.19.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.flexjson</groupId>
+			<artifactId>flexjson</artifactId>
+			<version>3.2</version>
+		</dependency>
+		
+		
+		<!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+		<dependency>
+		    <groupId>commons-httpclient</groupId>
+		    <artifactId>commons-httpclient</artifactId>
+		    <version>3.1</version>
+		</dependency>
+		
 	</dependencies>
 	
 	<build>
