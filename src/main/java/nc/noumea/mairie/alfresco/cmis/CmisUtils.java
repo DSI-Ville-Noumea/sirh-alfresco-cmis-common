@@ -67,6 +67,14 @@ public final class CmisUtils {
 	public static final String CODE_TYPE_NS = "NS";
 	public static final String CODE_TYPE_FP = "FP";
 	
+	// Groupes
+	public static final String GROUPE_DRH = "GROUP_SITE_SIRH_DRH";
+	
+	private static final String PREFIXE_GROUP = "GROUP_SITE_SIRH_";
+	private static final String SHD = "_SHD";
+	
+	// Roles
+	public static final String ROLE_CONSUMER = "Consumer";
 	
     protected CmisUtils () { 
     }
@@ -286,5 +294,9 @@ public final class CmisUtils {
 	public static String getPatternEAE(Integer idAgent, String annee, int i) {
 		
 		return CODE_TYPE_EAE + UNDERSCORE + annee + UNDERSCORE + idAgent + (i != 0 ? (UNDERSCORE + i) : "");
+	}
+	
+	public static String getGroupeSHDOfAgent(Integer idAgent, String nom, String prenom) {
+		return PREFIXE_GROUP + getPathAgent(idAgent, nom, prenom) + SHD;
 	}
 }

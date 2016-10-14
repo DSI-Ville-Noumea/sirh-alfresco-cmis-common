@@ -211,4 +211,14 @@ public class CmisUtilsTest {
 		
 		assertEquals(CmisUtils.getPatternEAE(idAgent, annee, i+1), "EAE_2016_9005138_1");
 	}
+	
+	@Test 
+	public void getGroupeSHDOfAgent() {
+		
+		Integer idAgent = 9005131;
+		String nom = "SALES";
+		String prenom = "ADRIEN";
+		
+		assertEquals(CmisUtils.getGroupeSHDOfAgent(idAgent, nom, prenom), "GROUP_SITE_SIRH_ADRIEN_SALES_9005131_SHD");
+	}
 }
