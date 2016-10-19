@@ -52,6 +52,7 @@ public final class CmisUtils {
 		
 	// Type des documents SIRH
 	public static final String CODE_TYPE_AT = "AT";
+	public static final String CODE_TYPE_MP = "MP";
 	public static final String CODE_TYPE_EAE = "EAE";
 	public static final String CODE_TYPE_ADM = "ADM";
 	public static final String CODE_TYPE_PHO = "PHO";
